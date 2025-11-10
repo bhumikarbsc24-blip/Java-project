@@ -1,44 +1,40 @@
+import javax.swing.JOptionPane;
 public class GuessingGame {
       public static void main(String[] args) {
-      }
-}
-public class GuessingGame {
-    //main method 
-    public static void main(String[] args) {
-        int computerNumber = (int) (Math.random()*100 + 1); //generate random num
-        int userAnswer = 0; //initialize
-        // log correct answer to console for verification
-        System.out.println("The correct guess would be " + computerNumber);
-        int count = 1; //initialize
-        // Display input dialog until the user guesses the correct number 
-        while (userAnswer != computerNumber)
-        {
-            String response = JOptionPane.showInputDialog(null, 
-                "Enter a guess between 1 and 100", "Guessing Game", 3); // display initial input dialog to user
-            userAnswer = Integer.parseInt(response); //convert string to int for use in check method below
-            //pass userAnswer and the Compter gen number along with guess count to method
-            JOptionPane.showMessageDialog(null, ""+ determineGuess(userAnswer, computerNumber, count)); 
-            count++; //increment number of tries for each attempt
-        }  
-    }
-    
-    //Determine guess function to check how close number is to generated number and display try count
-    public static String determineGuess(int userAnswer, int computerNumber, int count){
-        if (userAnswer <=0 || userAnswer >100) {
-            return "Your guess is invalid";
-        }
-        else if (userAnswer == computerNumber ){
-            return "Correct!\nTotal Guesses: " + count;
-        }
-        else if (userAnswer > computerNumber) {
-            return "Your guess is too high, try again.\nTry Number: " + count;
-        }
-        else if (userAnswer < computerNumber) {
-            return "Your guess is too low, try again.\nTry Number: " + count;
-        }
-        else {
-            return "Your guess is incorrect\nTry Number: " + count;
-            
-        }
-    }
-}
+      int totalGames = 0;
+        int totalTries = 0;
+        int bestScore = Integer.MAX_VALUE;
+
+        JOptionPane.showMessageDialog(null,
+            " Welcome to the Guessing Game!\nTry to guess the number between 1 and 100.",
+            "Guessing Game", JOptionPane.INFORMATION_MESSAGE);
+
+        boolean playAgain = true;
+
+        while (playAgain) {
+            int number = (int)(Math.random() * 100 + 1); // secret number
+            int guess = 0;
+            int tries = 0;
+
+while (guess != number) {
+                String input = JOptionPane.showInputDialog("Enter your guess between 1 and 100:");
+
+                if (input == null) {
+                    JOptionPane.showMessageDialog(null, "Game cancelled. ");
+                    return;
+                }
+
+try {
+                    guess = Integer.parseInt(input);
+                    tries++;
+
+                    if (guess < 1 || guess > 100) {
+                        JOptionPane.showMessageDialog(null, " Please enter a number between 1 and 100.");
+                    } 
+                    else if (guess < number) {
+                        JOptionPane.showMessageDialog(null, " Too low! Try again. (Try " + tries + ")");
+                    } 
+                    else if (guess > number) {
+                        JOptionPane.showMessageDialog(null, " Too high! Try again. (Try " + tries + ")");
+                    } 
+
