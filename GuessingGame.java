@@ -1,12 +1,7 @@
-package guessinggame;
-
-/** Tyler Normile
- * Java game that allows user to guess a random numnber that has been generated.
- * @author @Tyler_N
- */
-
-import javax.swing.*;
-
+public class GuessingGame {
+      public static void main(String[] args) {
+      }
+}
 public class GuessingGame {
     //main method 
     public static void main(String[] args) {
