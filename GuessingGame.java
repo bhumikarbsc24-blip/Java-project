@@ -12,7 +12,7 @@ public class GuessingGame {
         boolean playAgain = true;
 
         while (playAgain) {
-            int number = (int)(Math.random() * 100 + 1); // secret number
+            int number = (int)(Math.random() * 100 + 1);
             int guess = 0;
             int tries = 0;
 
@@ -48,14 +48,14 @@ try {
                 }
             }
 
-            // Update scoreboard
+            
             totalGames++;
             totalTries += tries;
             if (tries < bestScore) {
                 bestScore = tries;
             }
 
-            // Show scoreboard
+      
             double average = (double) totalTries / totalGames;
             String scoreboard = " Scoreboard \n"
                 + "Games Played: " + totalGames + "\n"
@@ -65,7 +65,7 @@ try {
 
             JOptionPane.showMessageDialog(null, scoreboard, "Scoreboard", JOptionPane.INFORMATION_MESSAGE);
 
-            // Ask to play again
+           
             int option = JOptionPane.showConfirmDialog(null,
                 "Do you want to play again?", "Play Again?", JOptionPane.YES_NO_OPTION);
 
